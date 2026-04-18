@@ -1,0 +1,8 @@
+torch
+transformers
+unidic_lite
+fugashi
+scikit-learn
+datasets
+seqeval
+setuptools==81.0.0
