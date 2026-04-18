@@ -4,13 +4,16 @@ from label import label2id
 
 MAX_LENGTH = 128  # 一文あたりの最大トークン数
 BERT_MODEL = "cl-tohoku/bert-base-japanese-v2"  # 使用する学習済みモデル
-DATASET_PATH = "./dataset/ner_short.json"
-TAGGED_DATASET_PATH = "./dataset/ner_tagged.json"
+DATASET_PATH = "./ner-wikipedia-dataset/ner.json"
+TAGGED_DATASET_PATH = "./ner-wikipedia-dataset/ner_tagged.json"
 
 # 1. データ読み込み
 
 with open(DATASET_PATH) as f:
   ner_data_list = json.load(f)
+
+if isinstance(ner_data_list, dict):
+  ner_data_list = [ner_data_list]
 
 # 2. 固有表現タグづけ
 

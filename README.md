@@ -6,8 +6,10 @@ Hugging Face TransformersのBERTを使用し、日本語の固有表現抽出（
 ## 環境構築
 
 このリポジトリを使用するには、まず必要なライブラリをインストールしてください。
-以下のコマンドを実行して、依存パッケージをインストールします。
+以下のコマンドを実行して、仮想環境の作成と依存パッケージのインストールを行います。
 
 ```bash
-pip install torch transformers unidic_lite fugashi scikit-learn datasets seqeval
+conda create -n ner python=3.10 -y
+conda activate ner
+pip install torch transformers unidic_lite fugashi scikit-learn datasets seqeval evaluate accelerate
 ```

@@ -7,7 +7,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 MAX_LENGTH = 128  # 一文あたりの最大トークン数
 BERT_MODEL = "cl-tohoku/bert-base-japanese-v2"  # 使用する学習済みモデル
-TAGGED_DATASET_PATH = "./dataset/ner_tagged.json"
+TAGGED_DATASET_PATH = "./ner-wikipedia-dataset/ner_tagged.json"
 MODEL_DIR = "./model"
 LOG_DIR = "./logs"
 
@@ -41,7 +41,7 @@ eval_data = NERDataset(eval_encoded_tagged_sentence_list)
 from transformers import Trainer, TrainingArguments
 
 import numpy as np
-from datasets import load_metric
+import evaluate
 
 # 事前学習モデル
 config = BertConfig.from_pretrained(BERT_MODEL, id2label=id2label, label2id=label2id)
@@ -59,7 +59,7 @@ training_args = TrainingArguments(
     logging_dir = LOG_DIR,
 )
 
-metric = load_metric("seqeval")
+metric = evaluate.load("seqeval")
 
 def compute_metrics(p):
     predictions, labels = p
@@ -89,7 +89,7 @@ trainer = Trainer(
     compute_metrics = compute_metrics, # 評価用関数
     train_dataset = train_data, # 学習用データ
     eval_dataset = eval_data, # 検証用データ
-    tokenizer = tokenizer
+    processing_class = tokenizer
 )
 
 # 5. 学習

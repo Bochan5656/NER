@@ -9,3 +9,4 @@ label2id = {
     "B-製品名": 13, "I-製品名": 14,
     "B-イベント名": 15, "I-イベント名": 16
 }
+id2label = {v: k for k, v in label2id.items()}
