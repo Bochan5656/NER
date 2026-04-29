@@ -13,3 +13,6 @@ conda create -n ner python=3.10 -y
 conda activate ner
 pip install torch transformers unidic_lite fugashi scikit-learn datasets seqeval evaluate accelerate
 ```
+
+## レポート
+詳しいBERTやNERについて：[レポート](docs/manual.md)
