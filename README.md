@@ -15,4 +15,4 @@ pip install torch transformers unidic_lite fugashi scikit-learn datasets seqeval
 ```
 
 ## レポート
-詳しいBERTやNERについて：[レポート](docs/manual.md)
+詳しいBERTやNERについて：[レポート](NER/note.md)
